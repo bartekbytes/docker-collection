@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  # PostgreSQL database
+  postgresql_db:
+    image: postgres:latest
+    container_name: postgresql-db
+    restart: always
+    ports:
+      - "5432:5432" # Default PostgreSQL port
+    environment:
+      POSTGRES_PASSWORD: postgresql
+    volumes:
+      - postgresql_db_data:/var/lib/postgresql/data # Docker managed volume
+
+  # pgAdmin4 Web UI for PostgreSQL database
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    restart: always
+    ports:
+      - "8888:80" # Expose Web UI to port 8888
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: postgresql
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin # Docker managed volume
+
+volumes:
+  postgresql_db_data:
+  pgadmin_data:
