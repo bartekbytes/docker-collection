@@ -1,6 +1,6 @@
 # Intro
 
-This `docker-compose.yml` file defines a basic setup for running a local PostgreSQL server using Docker Compose.
+This `docker-compose.yml` file defines a basic setup for running a local **PostgreSQL** server using **Docker Compose**.
 
 It creates two services:
 
@@ -12,6 +12,8 @@ It creates two services:
 ## General
 
 - for both services, the **latest** images are pulled.
+  - _PostgreSQL_ official docker image [docs](https://hub.docker.com/_/postgres)
+  - _pgAdmin4_ official docker image [docs](https://hub.docker.com/r/dpage/pgadmin4/)
 - for both services, `container_name` is used instead of default names.
 
 ## `postgresql_db` Service
@@ -19,7 +21,7 @@ It creates two services:
 - Exposes the default PostgreSQL port `5432`.
 - Defines one required environment variable:
   - `POSTGRES_PASSWORD` - sets the password for the default PostgreSQL user. (For a full list of environment variables, see the official PostgreSQL
-    [Docker image documentation](https://hub.docker.com/_/postgres), under "How to extend this image")
+    [Docker image documentation](https://hub.docker.com/_/postgres), under _How to extend this image_)
 - Uses a Docker-managed volume named `postgresql_db_data` (not a local host directory)
 
 ## `pgadmin` Service
